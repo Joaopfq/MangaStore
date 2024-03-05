@@ -1,8 +1,9 @@
 package com.example.demo.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import com.example.demo.model.Manga;
+import org.springframework.stereotype.Repository;
 
-public interface MangaRepository extends JpaRepository<Manga, Long> {
-
-
+@Repository
+public interface MangaRepository extends CrudRepository<Manga, Long> {
+    
 }

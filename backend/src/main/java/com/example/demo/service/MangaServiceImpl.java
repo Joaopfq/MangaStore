@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Manga;
@@ -22,7 +23,7 @@ public class MangaServiceImpl implements MangaService {
 
     @Override
     public List<Manga> findAll() {
-        return mangaRepository.findAll();
+        return Streamable.of(mangaRepository.findAll()).toList();
     }
 
     @Override
@@ -33,7 +34,6 @@ public class MangaServiceImpl implements MangaService {
     @Override
     public Manga update(Manga manga){
         return mangaRepository.save(manga);
-
     }
 
     @Override

@@ -13,12 +13,16 @@ services:
     postgres:
         image: postgres:bullseye
         container_name: postgres_container
-        environment: 
+        environment:
             - POSTGRES_PASSWORD=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=mangastore
         ports: 
             - "5432:5432"
         networks: 
-            - postgres-network                
+            - postgres-network           
+        volumes:
+            - /home/data/postgres:/var/lib/postgres/data
 networks: 
     postgres-network:
         driver: bridge
