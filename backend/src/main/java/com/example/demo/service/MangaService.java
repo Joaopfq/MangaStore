@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Manga;
+import com.example.demo.model.dto.MangaUpdateDTO;
 import com.example.demo.repository.projection.MangaSummary;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface MangaService {
 
     Optional<Manga> findById(Long id);
 
-    Manga update(Manga manga);
+    Manga update(MangaUpdateDTO manga);
 
     void deleteById(Long id);
 }

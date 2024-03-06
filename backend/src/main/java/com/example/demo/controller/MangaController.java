@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Manga;
+import com.example.demo.model.dto.MangaUpdateDTO;
 import com.example.demo.repository.projection.MangaSummary;
 import com.example.demo.service.MangaService;
 
@@ -53,8 +54,12 @@ public class MangaController {
     }
 
     @PutMapping
-    public ResponseEntity<Manga> update(@RequestBody Manga manga) {
-        return ResponseEntity.status(HttpStatus.OK).body(mangaService.update(manga));
+    public ResponseEntity<Void> update(@RequestBody MangaUpdateDTO manga) {
+        Manga alterManga = mangaService.update(manga);
+        if(alterManga == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")

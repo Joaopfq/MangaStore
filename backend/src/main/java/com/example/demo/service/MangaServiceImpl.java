@@ -11,6 +11,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Manga;
+import com.example.demo.model.dto.MangaUpdateDTO;
 import com.example.demo.repository.MangaRepository;
 import com.example.demo.repository.projection.MangaSummary;
 
@@ -42,8 +43,17 @@ public class MangaServiceImpl implements MangaService {
     }
 
     @Override
-    public Manga update(Manga alterManga){
-        return mangaRepository.save(alterManga);
+    public Manga update(MangaUpdateDTO alterManga){
+        Optional<Manga> manga = mangaRepository.findById(alterManga.id());
+        
+        if(manga.isEmpty()){
+            return null;
+        }
+        manga.get().setNome(alterManga.nome());
+        manga.get().setSinopse(alterManga.sinopse());
+        manga.get().setValue(alterManga.valor());
+
+        return mangaRepository.save(manga.get());
     }
 
     @Override
