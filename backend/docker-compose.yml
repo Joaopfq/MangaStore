@@ -1,5 +1,5 @@
 version: "4.28"
-services: 
+services:
     pgadmin4:
         image: dpage/pgadmin4
         container_name: pgadmin4_container
