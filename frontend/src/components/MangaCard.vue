@@ -1,5 +1,5 @@
 <template>
-    <VDialog v-model="open">
+    <VDialog width="600px" v-model="open">
         <template #activator="{ props }">
             <VCard v-bind="props" width="500px" min-height="300px" class="ma-6" variant="elevated" color="#222622">
                 <VCardActions>
