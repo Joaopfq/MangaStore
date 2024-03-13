@@ -1,14 +1,10 @@
 <template>
-    <v-app-bar app color="black">
-      <v-app-bar-title class="title"> Manga Store</v-app-bar-title>
-    </v-app-bar>
+    <VAppBar app color="black">
+      <v-app-bar-title class="text-h5"> MangaStore</v-app-bar-title>
+    </VAppBar>
 </template>
 
-<style>
+<style scoped>
 
-.title {
-  font-family: sans-serif;
-  font-size: x-large;
-}
 
 </style>
