@@ -2,12 +2,12 @@
     <VDialog width="600px" v-model="open">
         <template #activator="{ props }">
             <VCard v-bind="props" width="500px" min-height="300px" class="ma-6" variant="elevated" color="#222622">
-                <VCardActions>
+                <VCardActions height="10px" class="pa-0">
                     <VBtn @click.stop="() => deleteManga(id)">
                         <VIcon size="24" color="red" icon="mdi-close-circle" />
                     </VBtn>
                 </VCardActions>
-                <VCardText >
+                <VCardText class="pt-0" >
                     <p class="text-h5 text--primary mb-3 font-weight-bold text-md-center">
                         {{ nome }}
                     </p>

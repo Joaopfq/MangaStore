@@ -4,7 +4,7 @@
     <VCard class="d-flex justify-center align-center w-50 h-50" v-if="mangas.length === 0 && !mangaLoading">
       <h2 >Nenhum mangá cadastrado</h2>
     </VCard>
-    <VList v-else class="d-flex flex-wrap flex-md-row justify-center">
+    <VList min-height="600px" min-width="600px" v-else class="d-flex flex-wrap flex-md-row justify-center">
 		  <VListItem v-for="manga in mangas" :key="manga.nome">
 				<MangaCard @submit="fetchMangas" :id="manga.id" :nome="manga.nome" :sinopse="manga.sinopse" :value="manga.value" />     
 		  </VListItem>
