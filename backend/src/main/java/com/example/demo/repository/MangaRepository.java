@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MangaRepository extends CrudRepository<Manga, Long> {
-    public Page<MangaSummary> findByNome(Pageable pageable, String nome);}
+    public Page<MangaSummary> findByNome(Pageable pageable, String nome);
+}

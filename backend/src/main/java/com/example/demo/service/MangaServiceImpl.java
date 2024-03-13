@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,7 +40,11 @@ public class MangaServiceImpl implements MangaService {
     @Override
     public Page<MangaSummary> findByName(String name, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return mangaRepository.findByNome(pageable, name);
+        Page<MangaSummary> manga = mangaRepository.findByNome(pageable, name);
+        if (manga.isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return manga;
     }
 
     @Override
@@ -47,11 +52,11 @@ public class MangaServiceImpl implements MangaService {
         Optional<Manga> manga = mangaRepository.findById(alterManga.id());
         
         if(manga.isEmpty()){
-            return null;
+            throw new NoSuchElementException();
         }
         manga.get().setNome(alterManga.nome());
         manga.get().setSinopse(alterManga.sinopse());
-        manga.get().setValue(alterManga.valor());
+        manga.get().setValue(alterManga.value());
 
         return mangaRepository.save(manga.get());
     }

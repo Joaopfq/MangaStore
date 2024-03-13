@@ -4,7 +4,7 @@ public record MangaUpdateDTO (
     Long id,
     String nome,
     String sinopse,
-    Double valor
+    Double value
 
 ) { }
 
